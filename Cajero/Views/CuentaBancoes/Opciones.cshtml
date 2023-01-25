@@ -1,0 +1,54 @@
+﻿@model Cajero.ViewModel.CuentaBancoViewModel
+
+@{
+    ViewBag.Title = "Gestión de cuenta bancaria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div class="col-md-6">
+        <h3>Cuenta</h3>@Model.NoCuenta
+    </div>
+    <div class="col-md-6 text-right">
+        <h3>Tipo cuenta</h3>@Model.typeAccount
+    </div>
+</div>
+<div class="card m-6">
+    <div class="p-3 text-center">
+        @Html.ActionLink("Retiro", "Retiro", new { id = Model.Id }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Deposito", "Deposito", new { id = Model.Id }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Consulta Balance", "Details", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Cambiar Pin", "ChangePin", new { id = Model.Id }, new { @class = "btn btn-danger" })
+    </div>
+</div>
+
+    @section scripts{
+        <script>
+
+        $(document).ready(function () {
+            var wrong = '@TempData["WRONGPIN"]';
+            var exceed = '@TempData["EXCEED"]';
+            var lack = '@TempData["LACK"]';
+            var exitoso = '@TempData["EXITOSO"]';
+            var tarjeta = '@TempData["CuentaCreada"]';
+
+            if (wrong == 'true') {
+                alert("Pin invalido.");
+            }
+            if (exceed == 'true') {
+                alert("No posee balance suficiente.");
+            }
+            if (lack == 'true') {
+                alert("El ATM no posee balance");
+            }
+            if (exitoso == 'true') {
+                alert("Transaccion exitosa.");
+            }
+            if(tarjeta == 'true')
+            {
+                alert("Cuenta creada. Tarjeta asociada: " + tarjeta);
+            }
+
+
+        });
+        </script>
+    }

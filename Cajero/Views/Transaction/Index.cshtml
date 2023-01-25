@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Cajero.Models.ATM_TRANSACTION>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TRANSACCIONES</h2>
+<style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+<div class="row">
+    @using (Html.BeginForm())
+    {
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <div class='input-group date'>
+                <input type='text' class="form-control date-picker" name="datetimepicker1" id='datetimepicker1' placeholder="Desde" />
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <div class='input-group date'>
+                    <input type='text' class="form-control date-picker" name="datetimepicker2" id='datetimepicker2' placeholder="Hasta" />
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" value="Consultar"/>
+    </div>
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            FECHA
+        </th>
+        <th>
+            TIPO TRANSACCION
+        </th>
+        <th>
+            CUENTA
+        </th>
+        <th>
+            MONTO
+        </th>
+        <th>
+            CEDULA
+        </th>
+        <th>
+            DIRECCION
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TRANSACTION_DT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TRANSACTION_TYPE_NM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.USUARIO.ACCOUNT_USER_CD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TRANSACTION_AMT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.USUARIO.CEDULA_CD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MAQUINA.ADDRESS_DESC)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.TRANS_NO })
+    </td>
+</tr>
+    }
+
+</table>
+
+@Html.ActionLink("Volver", "Admin", "ADMINISTRADORs")
+@section scripts{
+    <script>
+        $("document").ready(function () {
+            /*$("#datetimepicker2").datetimepicker();
+            $("#datetimepicker1").datetimepicker();
+
+            $('#datetimepicker1, #datetimepicker2').datetimepicker({
+                format: 'dd/mm/yyyy',
+                startDate: moment().format('DD/MM/YYYY'),
+                endDate: moment().format('DD/MM/YYYY')
+            }).on('changeDate', function (e) {
+                console.log(e);
+            });*/
+
+            $('.date-picker').datetimepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'hh:mm:ss',
+                yearRange: '1980:' + new Date().getFullYear(),
+                onClose: function (dateText, inst) {
+                    $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                }
+            });
+        });
+    </script>
+}

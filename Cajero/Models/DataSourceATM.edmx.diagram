@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb77271530a34a569b58a21252f31c39" Name="Diagram1">
+        <EntityTypeShape EntityType="ATMDBModel.ADMINISTRADOR" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="ATMDBModel.MAQUINA" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="ATMDBModel.USUARIO" Width="1.5" PointX="3" PointY="8" />
+        <AssociationConnector Association="ATMDBModel.FK__MAQUINA__USER_AD__29572725" />
+        <EntityTypeShape EntityType="ATMDBModel.ATM_TRANSACTION" Width="1.5" PointX="5.25" PointY="6" />
+        <AssociationConnector Association="ATMDBModel.FK__ATM_TRANS__Card___49C3F6B7" />
+        <AssociationConnector Association="ATMDBModel.FK__ATM_TRANS__ID_AT__4AB81AF0" />
+        <EntityTypeShape EntityType="ATMDBModel.DETALLE_MONEDA" Width="1.5" PointX="5.25" PointY="2.375" />
+        <AssociationConnector Association="ATMDBModel.FK_DETALLE_MONEDA_MAQUINA" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

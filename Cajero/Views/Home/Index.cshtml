@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-12">
+    <h1 class="text-center">Cajero Automático</h1>
+    <div>
+        <img class="rounded float-right img-responsive center-block" src="~/img/edificioBanco.jpg" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Deposito</h2>
+        <p>
+            Los depósitos en moneda nacional o extranjera que se realicen en cualquier tipo de cuenta que las personas físicas o morales tengan a su nombre en las Instituciones del Sistema Financiero, así como las adquisiciones en efectivo de cheques de caja.
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Retiro</h2>
+        <p>El concepto de retiro bancario hace referencia a la acción de extraer dinero en efectivo de un banco. Para que este proceso sea posible, la persona debe contar con una cuenta en la entidad bancaria en cuestión y, a la vez, tener fondos disponibles en la misma.</p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Gestión de banco</h2>
+        <p>El módulo para Gestión de Cuentas Bancarias es una aplicación que le permite mantener una o varias cuentas bancarias de una forma muy simple conociendo el saldo de la cuenta en todo momento.</p>
+        <p><a class="btn btn-primary" href="@Url.Action("Index", "CuentaBancoes")">Gestion de Cuentas</a></p>
+    </div>
+
+
+    @if (Session["UserName"] != null)
+    {
+        <div class="col-md-4">
+            <h2>Admin</h2>
+            <p><a class="btn btn-primary" href="@Url.Action("Admin", "ADMINISTRADORs")">Administracion ATM</a></p>
+        </div>
+    }
+</div>

@@ -1,0 +1,83 @@
+﻿@model Cajero.ViewModel.CuentaBancoViewModel
+
+@{
+    ViewBag.Title = "Retiro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Cuenta Banco</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.NoCuenta)
+    @Html.HiddenFor(model => model.Balance)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NoCuenta, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.NoCuenta, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NoCuenta, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.typeAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.typeAccount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.typeAccount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="cien" value="100" autocomplete="off">
+                    100
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="doscientos" value="200" autocomplete="off">
+                    200
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="quinientos" value="500" autocomplete="off">500
+
+                </label>
+
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="mil" value="1000" autocomplete="off">1000
+                </label>
+
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="dosmil" value="2000" autocomplete="off">2000
+                </label>
+                <label class="btn btn-primary">
+                    Otra cantidad @Html.EditorFor(model => model.Retiro, new { htmlAttributes = new { @class = "form-control", @placeholder = "Otra cantidad", @min = "0", @max = "999999" } })
+                </label>
+                @Html.ValidationMessageFor(model => model.Retiro, "", new { @class = "text-danger" })
+                 
+        </div>
+
+    @Html.HiddenFor(model => model.PIN)
+    @Html.HiddenFor(model => model.Cedula)
+    @Html.HiddenFor(model => model.typeAccount)
+    <div class="row px-6"></div>
+    <div class="p-5">
+        <div class="col-md-10">
+            <input type="submit" value="Retirar" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Volver", "Inicio", new { @class="btn btn-danger"})
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

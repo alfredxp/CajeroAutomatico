@@ -1,0 +1,89 @@
+﻿@model Cajero.ViewModel.CuentaBancoViewModel
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inicio</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CuentaBanco</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Balance)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoCuenta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoCuenta, new { htmlAttributes = new { @class = "form-control", @required="required"} })
+                @Html.ValidationMessageFor(model => model.NoCuenta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PIN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.PIN, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.PIN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Retiro)
+        @Html.HiddenFor(model => model.Cedula)
+        @Html.HiddenFor(model => model.typeAccount)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ingresar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            var notfound = '@TempData["NOTFOUND"]';
+            var pinwrong = '@TempData["PINWRONG"]';
+            var wrong = '@TempData["WRONGPIN"]';
+            var exceed = '@TempData["EXCEED"]';
+            var lack = '@TempData["LACK"]';
+            var exitoso = '@TempData["EXITOSO"]';
+            var tarjeta = '@TempData["CuentaCreada"]';
+            var changepin = '@TempData["CHANGEPIN"]';
+
+            if (wrong == 'true') {
+                alert("Pin invalido.");
+            }
+            if (exceed == 'true') {
+                alert("No posee balance suficiente.");
+            }
+            if (lack == 'true') {
+                alert("El ATM no posee balance");
+            }
+            if (exitoso == 'true') {
+                alert("Transaccion exitosa.");
+            }
+            if(tarjeta == 'true')
+            {
+                alert("Cuenta creada. Tarjeta asociada: " + tarjeta);
+            }
+            if (notfound == 'true') {
+                alert("No se encontró la cuenta.");
+            }
+
+            if (pinwrong == 'true') {
+                alert("PIN Incorrecto.");
+            }
+            if (changepin == 'true') {
+                alert("Cambio de PIN exitoso.");
+            }
+
+        });
+    </script>
+}

@@ -1,0 +1,65 @@
+﻿@model Cajero.Models.MAQUINA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Borrar Maquina</h2>
+
+<h3>Esta seguro de querer borrar esta ATM?</h3>
+<div>
+    <h4>MAQUINA ATM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_DESC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_DESC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE_DISTINC_CASH_NM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE_DISTINC_CASH_NM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CASH_CANT_CNT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CASH_CANT_CNT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BALANCE_AMT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BALANCE_AMT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADMINISTRADOR.USER_ADMIN_NM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADMINISTRADOR.USER_ADMIN_NM)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

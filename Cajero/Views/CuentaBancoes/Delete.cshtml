@@ -1,0 +1,57 @@
+﻿@model Cajero.ViewModel.CuentaBancoViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Borrar Cuenta</h2>
+
+<h3>Esta seguro de querer borrar esta cuenta?</h3>
+<div>
+    <h4>Cuenta Banco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoCuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoCuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUser)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Index", "CuentaBancoes")'">Volver</button>
+        </div>
+    }
+</div>

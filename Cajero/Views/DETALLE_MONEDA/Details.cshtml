@@ -1,0 +1,43 @@
+﻿@model Cajero.Models.DETALLE_MONEDA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DETALLE_MONEDA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BILLETE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BILLETE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAQUINA.ADDRESS_DESC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAQUINA.ADDRESS_DESC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_MONEDA_DETALLE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

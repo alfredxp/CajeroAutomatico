@@ -1,0 +1,139 @@
+﻿@model Cajero.ViewModel.Maquina
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>MAQUINA</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.idATM, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.idATM, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.idATM, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.idAdmin, "idAdmin", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("idAdmin", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idAdmin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.balance, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.balance, new { htmlAttributes = new { @class = "form-control", @disabled="disabled"} })
+            @Html.ValidationMessageFor(model => model.balance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            Billete
+        </div>
+        <div class="col-md-6">
+            Cantidad
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[0].Billete, new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = "100", @readonly = "readonly" } })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[0].Cantidad, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @max = "999999", @Value = "0" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            Billete
+        </div>
+        <div class="col-md-6">
+            Cantidad
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[1].Billete, new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = "200", @readonly = "readonly" } })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[1].Cantidad, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            Billete
+        </div>
+        <div class="col-md-6">
+            Cantidad
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[2].Billete, new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = "500", @readonly = "readonly" } })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[2].Cantidad, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            Billete
+        </div>
+        <div class="col-md-6">
+            Cantidad
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[3].Billete, new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = "1000", @readonly = "readonly" } })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[3].Cantidad, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            Billete
+        </div>
+        <div class="col-md-6">
+            Cantidad
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[4].Billete, new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = "2000", @readonly = "readonly" } })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.monedaDetalles[4].Cantidad, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

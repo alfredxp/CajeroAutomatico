@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Cajero.Models.MAQUINA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear maquina", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Balance ATM
+        </th>
+        <th>
+            Creado Por
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDRESS_DESC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BALANCE_AMT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADMINISTRADOR.USER_ADMIN_NM)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_ATM_CD }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_ATM_CD }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_ATM_CD })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Volver", "Admin", "ADMINISTRADORs")

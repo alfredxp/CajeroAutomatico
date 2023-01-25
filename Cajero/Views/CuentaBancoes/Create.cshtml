@@ -1,0 +1,78 @@
+﻿@model Cajero.ViewModel.CuentaBancoViewModel
+
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Cuenta Banco</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @type = "number", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PIN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.typeAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.typeAccount,
+                    new SelectList(Enum.GetValues(typeof(Cajero.ViewModel.TipoCuenta))),
+                    "Seleccionar tipo cuenta")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", @type="number", @max="999999" } })
+            @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NoCuenta, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NoCuenta, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NoCuenta, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PIN, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PIN, new { htmlAttributes = new { @class = "form-control", @min="1000", @max="9999" } })
+            @Html.ValidationMessageFor(model => model.PIN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Index", "CuentaBancoes")'">Volver</button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}

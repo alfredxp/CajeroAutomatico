@@ -1,0 +1,58 @@
+﻿@model Cajero.Models.ATM_TRANSACTION
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ATM_TRANSACTION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo de Transaccion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANSACTION_DT)
+        </dd>
+
+        <dt>
+            Tipo de transaccion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANSACTION_TYPE_NM)
+        </dd>
+
+        <dt>
+            Monto de Transaccion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANSACTION_AMT)
+        </dd>
+
+        <dt>
+            Cedula de Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO.CEDULA_CD)
+        </dd>
+
+        <dt>
+            Direccion de transaccion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAQUINA.ADDRESS_DESC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Volver", "Index","CuentaBancoes")
+</p>

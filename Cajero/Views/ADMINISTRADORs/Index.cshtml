@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Cajero.Models.ADMINISTRADOR>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.USER_ADMIN_NM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADMIN_PASSWORD_CD)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.USER_ADMIN_NM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADMIN_PASSWORD_CD)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.USER_ADMIN_CD })
+                @Html.ActionLink("Details", "Details", new { id = item.USER_ADMIN_CD })
+                @Html.ActionLink("Delete", "Delete", new { id = item.USER_ADMIN_CD })
+                @Html.ActionLink("Crear Maquina", "Create", "MAQUINAs")
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Volver", "Admin")

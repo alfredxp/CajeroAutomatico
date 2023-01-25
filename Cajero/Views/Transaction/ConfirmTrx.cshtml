@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmTrx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recibo</h2>
+
+<h4>Desea copia del recibo de transaccion?</h4>
+<div class="form-actions no-color">
+    @Html.ActionLink("Sí", "Details","Transaction", new { id = ViewBag.IdTrx }, new { @class = "btn btn-success" })
+    @Html.ActionLink("No", "Index", "CuentaBancoes",null, new { @class = "btn btn-primary" })
+</div>
+

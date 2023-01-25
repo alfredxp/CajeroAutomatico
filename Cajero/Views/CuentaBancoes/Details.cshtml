@@ -1,0 +1,58 @@
+﻿@model Cajero.Models.USUARIO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USUARIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            NUMERO DE CUENTA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACCOUNT_USER_CD)
+        </dd>
+
+        <dt>
+            CEDULA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEDULA_CD)
+        </dd>
+
+        <dt>
+            TIPO CUENTA 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACCOUNT_TYPE_DESC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BALANCE_USER_STOCK_AMT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BALANCE_USER_STOCK_AMT)
+        </dd>
+
+        <dt>
+            BALANCE ACTUAL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BALANCE_USER_CURRENT_AMT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Volver", "Index")
+</p>

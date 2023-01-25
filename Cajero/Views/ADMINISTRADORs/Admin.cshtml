@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin</h2>
+
+@if (Session["UserName"] != null)
+{
+    <div class="col-md-6">
+        <h2>Gestión de maquinas</h2>
+        <p>El módulo para Gestión de maquinas es un modulo que le permite crear maquinas ATM para gestionar cuentas bancarias de una forma muy simple conociendo.</p>
+        <p><a class="btn btn-primary" href="@Url.Action("Index", "MAQUINAs")">Gestion de Maquinas</a></p>
+    </div>
+}
+
+@if (Session["UserName"] != null)
+{
+    <div class="col-md-6">
+        <h2>Transacciones</h2>
+        <p>El módulo para visualizar las transacciones, es un modulo que le permite visualizar a detalle todas las transacciones realizadas, ordenadas por maquina.</p>
+        <p><a class="btn btn-primary" href="@Url.Action("Index", "Transaction")">Transacciones</a></p>
+    </div>
+}
+
